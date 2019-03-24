@@ -2,7 +2,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=no" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic" rel="stylesheet">
 	<script type="module">
-		import Chart from "./lib/Chart.min.js";
+		import Chart from "./lib/Chart.js";
 
 		let chart = new Chart(".charts")
 		chart.load("chart_data.json");
@@ -55,9 +55,29 @@
 				background: #252f3e;
 				display: block;
 			}
+
+		a {
+			color: #ddd;
+		}
+
+		.description {
+			text-align: center;
+			margin-bottom: 30px;
+			font-size: 12px;
+			}
+			.description>div {
+				display: inline-block;
+				text-align: left;
+			}
 	</style>
 </head>
 <body mode="night">
+	<div class="description">
+		<div>
+			17 kb <a target="_blank" href="https://flygomel.github.io/Chart.js/lib/Chart.js">Chart.js</a><br>
+			12 kb <a target="_blank" href="https://flygomel.github.io/Chart.js/lib/Chart.min.js">Chart.min.js</a>
+		</div>
+	</div>
 	<div class="charts"></div>
 	<div class="switch-mode-button" mode="night">Switch to Night Mode</div>
 	<div class="switch-mode-button" mode="day">Switch to Day Mode</div>
