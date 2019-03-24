@@ -1,0 +1,64 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=no" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic" rel="stylesheet">
+	<script type="module">
+		import Chart from "./lib/Chart.min.js";
+
+		let chart = new Chart(".charts")
+		chart.load("chart_data.json");
+
+		document
+			.querySelectorAll(".switch-mode-button")
+			.forEach(el => {
+				el.onclick = e => {
+					let mode = e.target.getAttribute("mode");
+					chart
+						.setMode(mode);
+					document.querySelector("body").setAttribute("mode", mode);
+				}
+			});
+	</script>
+	<style>
+		body {
+			font-family: 'Roboto', sans-serif;
+			user-select: none;
+			background: center bottom no-repeat;
+			background-size: 100%;
+			margin: 0;
+			padding-top: 21px;
+			padding-bottom: 80px;
+			-webkit-tap-highlight-color: transparent;
+			}
+			body[mode=night] {
+				color: #fff;
+				background-color: #252f3e;
+			}
+
+		.switch-mode-button {
+			z-index: 1;
+			display: none;
+			position: fixed;
+			color: #36a8f1;
+			font-size: 18px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			text-align: center;
+			padding: 28px 0;
+			cursor: pointer;
+			}
+			body[mode=day] .switch-mode-button[mode=night] {
+				background: #fff;
+				display: block;
+			}
+			body[mode=night] .switch-mode-button[mode=day] {
+				background: #252f3e;
+				display: block;
+			}
+	</style>
+</head>
+<body mode="night">
+	<div class="charts"></div>
+	<div class="switch-mode-button" mode="night">Switch to Night Mode</div>
+	<div class="switch-mode-button" mode="day">Switch to Day Mode</div>
+</body>
